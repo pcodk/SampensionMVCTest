@@ -19,8 +19,7 @@ steps:
 - script: |
     echo Build docker container
     docker build -t $(dockerId).azurecr.io/$(imageName) -f docker/app/Dockerfile .
-    echo docker login $(dockerId).azurecr.io -u$(dockerUsername) -p$(pswd)
-    echo $ps wd | docker login $(dockerId).azurecr.io -u$(dockerUsername) --password-stdin
+    echo $pswd | docker login $(dockerId).azurecr.io -u$(dockerUsername) --password-stdin
     docker push $(dockerId).azurecr.io/$(imageName):latest
   displayName: 'Build and push docker container'
   env:
